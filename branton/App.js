@@ -2,55 +2,23 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
+  Dimensions, 
+  View,
   Text,
-  View
+  Image
 } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
-import { Grid, Icon } from 'antd-mobile-rn';
-import {Dimensions} from 'react-native';
+
+import Home from './src/pages/Home';
+import Invest from './src/pages/Invest';
+import Find from './src/pages/Find';
+import Account from './src/pages/Account';
+
 
 const deviceW = Dimensions.get('window').width;
-
 const basePx = 375;
-
 function px2dp(px) {
   return px *  deviceW / basePx;
-}
-
-class Index extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          index
-        </Text>
-      </View>
-    )
-  }
-}
-
-class Find extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          find
-        </Text>
-      </View>
-    )
-  }
-}
-
-class Account extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Account
-        </Text>
-      </View>
-    )
-  }
 }
 
 export default class Main extends React.Component {
@@ -63,28 +31,37 @@ export default class Main extends React.Component {
           <TabNavigator.Item
             selected={this.state.selectedTab === 'home'}
             title="首页"
-            selectedTitleStyle={{color: "#3496f0"}}
-            renderIcon={() => <Icon type={'\ue601'} size={px2dp(22)} color="red" />}
-            renderSelectedIcon={() => <Icon type={'\ue601'} size={px2dp(22)} color="#3496f0" />}
-            badgeText="20"
+            selectedTitleStyle={{color: "#fa6450"}}
+            renderIcon={() => <Image style={styles.imageIcon} source={require('./src/images/home.png')} />}
+            renderSelectedIcon={() => <Image style={styles.imageIcon} source={require('./src/images/home-active.png')} />}
+            badgeText="10"
             onPress={() => this.setState({selectedTab: 'home'})}>
-            <Index/>
+            <Home />
+          </TabNavigator.Item>
+          <TabNavigator.Item
+            selected={this.state.selectedTab === 'invest'}
+            title="理财"
+            selectedTitleStyle={{color: "#fa6450"}}
+            renderIcon={() => <Image style={styles.imageIcon} source={require('./src/images/invest.png')} />}
+            renderSelectedIcon={() => <Image style={styles.imageIcon} source={require('./src/images/invest-active.png')} />}
+            onPress={() => this.setState({selectedTab: 'invest'})}>
+            <Invest/>
           </TabNavigator.Item>
           <TabNavigator.Item
             selected={this.state.selectedTab === 'find'}
             title="发现"
-            selectedTitleStyle={{color: "#3496f0"}}
-            renderIcon={() => <Icon type={'\ue601'} size={px2dp(22)} color="red" />}
-            renderSelectedIcon={() => <Icon type={'\ue601'} size={px2dp(22)} color="#3496f0" />}
+            selectedTitleStyle={{color: "#fa6450"}}
+            renderIcon={() => <Image style={styles.imageIcon} source={require('./src/images/find.png')} />}
+            renderSelectedIcon={() => <Image style={styles.imageIcon} source={require('./src/images/find-active.png')} />}
             onPress={() => this.setState({selectedTab: 'find'})}>
             <Find/>
           </TabNavigator.Item>
           <TabNavigator.Item
             selected={this.state.selectedTab === 'account'}
             title="个人中心"
-            selectedTitleStyle={{color: "#3496f0"}}
-            renderIcon={() => <Icon type={'\ue601'} size={px2dp(22)} color="red" />}
-            renderSelectedIcon={() => <Icon type={'\ue601'} size={px2dp(22)} color="#3496f0" />}
+            selectedTitleStyle={{color: "#fa6450"}}
+            renderIcon={() => <Image style={styles.imageIcon} source={require('./src/images/account.png')} />}
+            renderSelectedIcon={() => <Image style={styles.imageIcon} source={require('./src/images/account-active.png')} />}
             onPress={() => this.setState({selectedTab: 'account'})}>
             <Account/>
           </TabNavigator.Item>
@@ -110,4 +87,8 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  imageIcon:{
+    width: 20,
+    height: 20
+  }
 });
