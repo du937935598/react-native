@@ -2,79 +2,101 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
-  ListView,
+  Text,
   TouchableHighlight,
-  Text
+  Share,
 } from 'react-native';
-import {root} from '../js/host';
-
+exports.framework = 'React';
+exports.title = 'Share';
+exports.description = 'Share data with other Apps.';
+exports.examples = [{
+  title: 'Share Text Content',
+  render() {
+    return <ShareMessageExample />;
+  }
+}];
 export default class Home extends Component {
-    constructor(props) {
-      super(props);
-      var ds = new ListView.DataSource({
-        rowHasChanged: (r1, r2) => r1 !== r2
-      });
-      this.state = {
-        dataSource: ds.cloneWithRows(['a','b','c']),
-      };
+  _shareMessage;
+  _shareText;
+  _showResult;
+  state;
+
+  constructor(props){
+    super(props);
+
+    this._shareMessage = this._shareMessage.bind(this);
+    this._shareText = this._shareText.bind(this);
+    this._showResult = this._showResult.bind(this);
+
+    this.state = {
+      result: ''
     };
+  }
 
-    componentWillMount(){
-      this._fetchData()
-    }
+  _shareMessage() {
+    Share.share({
+      message: 'React Native | A framework for building native apps using React',
+    })
+    .then(this._showResult)
+    .catch((error) => this.setState({result: 'error: ' + error.message}));
+  }
 
-    _fetchData(){
-      var myFetchOptions = {
-        method: 'GET'
-      };
-      fetch(root + '/admin.php/Enum/queryEnum.html', myFetchOptions)
-      .then(response => response.json())
-      .then(res => {
-        this.setState({
-          dataSource: this.state.dataSource.cloneWithRows(res.list)
-        })
-      })
+  _shareText() {
+    Share.share({
+      message: 'A framework for building native apps using React',
+      url: 'http://facebook.github.io/react-native/',
+      title: 'React Native'
+    }, {
+      dialogTitle: '标题一',
+      excludedActivityTypes: [
+        'com.apple.UIKit.activity.PostToTwitter'
+      ],
+      tintColor: 'green'
+    })
+    .then(this._showResult)
+    .catch((error) => this.setState({result: 'error: ' + error.message}));
+  }
+
+  _showResult(result) {
+    if (result.action === Share.sharedAction) {
+      if (result.activityType) {
+        this.setState({result: 'shared with an activityType: ' + result.activityType});
+      } else {
+        this.setState({result: 'shared'});
+      }
+    } else if (result.action === Share.dismissedAction) {
+      this.setState({result: 'dismissed'});
     }
-    
-    renderRow(row){
-      return(
-        <TouchableHighlight>
-          <View>
-            <Text>{row.id}</Text>
-            <Text>{row.type_name}</Text>
+  }
+
+  render() {
+    return (
+      <View>
+        <TouchableHighlight style={styles.wrapper}
+          onPress={this._shareMessage}>
+          <View style={styles.button}>
+            <Text>Click to share message</Text>
           </View>
         </TouchableHighlight>
-      )
-    }
-
-    render() {
-      return(
-        <View style={styles.container}>
-          <View style={styles.header}>
-            <Text style={styles.headerTitle}>首页</Text>
+        <TouchableHighlight style={styles.wrapper}
+          onPress={this._shareText}>
+          <View style={styles.button}>
+            <Text>Click to share message, URL and title</Text>
           </View>
-          <ListView 
-          dataSource={this.state.dataSource} 
-          renderRow={this.renderRow} 
-          enableEmptySections={true}/>
-        </View>
-      );
-    }
-}
+        </TouchableHighlight>
+        <Text>{this.state.result}</Text>
+      </View>
+    );
+  }
+};
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
+  wrapper: {
+    borderRadius: 5,
+    marginBottom: 5,
   },
-  header:{
-    paddingTop: 10,
-    paddingBottom: 10,
-    backgroundColor: '#fa6450',
+  button: {
+    backgroundColor: '#eeeeee',
+    padding: 10,
   },
-  headerTitle:{
-    color: '#fff',
-    fontSize: 16,
-    textAlign: 'center',
-  }
 });
