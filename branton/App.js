@@ -9,10 +9,10 @@ import {
 } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 
-import Home from './src/pages/Home';
-import Invest from './src/pages/Invest';
-import Find from './src/pages/Find';
-import Account from './src/pages/Account';
+import Home from './src/Home';
+import Invest from './src/Invest';
+import Find from './src/Find';
+import Account from './src/Account';
 
 
 const deviceW = Dimensions.get('window').width;
@@ -22,9 +22,13 @@ function px2dp(px) {
 }
 
 export default class Main extends React.Component {
-    state= {
-      selectedTab: 'home'
-    };
+    constructor(props) {
+      super(props);
+      this.state = {
+          selectedTab: 'home'
+      };
+    }
+    
     render() {
       return(
         <TabNavigator style={styles.container}>
