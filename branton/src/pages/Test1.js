@@ -5,6 +5,7 @@ import {
     Dimensions, 
     View,
     Text,
+    ScrollView,
     Image
   } from 'react-native';
 
@@ -32,7 +33,7 @@ export default class Test1 extends Component {
     }
     render() {
       return(
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
           <Text>首页</Text>
           <Text>首页</Text>
           <Text>首页</Text>
@@ -67,7 +68,7 @@ export default class Test1 extends Component {
           <Text>首页27</Text>
           <Text>首页28</Text>
           <Text>首页29</Text>
-        </View>
+        </ScrollView>
       );
     }
 }
@@ -75,8 +76,5 @@ export default class Test1 extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
 });

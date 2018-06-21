@@ -3,6 +3,7 @@ import {
     View,
     Navigator, 
     StyleSheet,
+    ScrollView,
     Text,
     Button,
     AppRegistry
@@ -18,17 +19,19 @@ export default class Home extends Component {
   _getpen(){
     this.props.navigation.goBack();
   }
+  componentWillUnmount(){
+    alert('aaaa');
+  }
    render() {
     const { navigate } = this.props.navigation;
     return (
-        <View>
-          {/* <Text>home</Text> */}
-          <Text>首页</Text>
-          <Text>首页</Text>
-          <Text>首页</Text>
-          <Text>首页</Text>
-          <Text>首页</Text>
-          <Text>首页</Text>
+        <ScrollView style={styles.wrapper}>
+          <Text>首页1</Text>
+          <Text>首页2</Text>
+          <Text>首页3</Text>
+          <Text>首页4</Text>
+          <Text>首页5</Text>
+          <Text>首页6</Text>
           <Button
           title="测试一"
           onPress={() =>navigate('Test1', { name: 'Jane' })}
@@ -64,13 +67,15 @@ export default class Home extends Component {
           <Text>首页27</Text>
           <Text>首页28</Text>
           <Text>首页29</Text>
-        </View>
+        </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
-
+  wrapper:{
+    flex: 1,
+  }
 })
 
 const App = StackNavigator({
