@@ -85,6 +85,7 @@ const router = () => (
                 >
                     <Stack key="Home"
                            title={'首页'}
+                           hideNavBar
                            image={Images.Home}
                            selectedImage={Images.Home}>
                         <Scene component={Home} key="home"/>
