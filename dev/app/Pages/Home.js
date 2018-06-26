@@ -8,6 +8,7 @@ import {
     StatusBar,
     Image,
 } from 'react-native';
+import { Flex, WhiteSpace, WingBlank } from 'antd-mobile-rn';
 
 import Swiper from 'react-native-swiper';
 
@@ -65,14 +66,16 @@ export default class Home extends Component {
                         <Image source={Images.Banner6} style={styles.bannerImg}/>
                     </Swiper>
                 </View>
-                <View style={styles.tabs}>
-                    <View style={styles.tabsImg}>
-                        <Image source={Images.IndexTabs1}/>
-                    </View>
-                    <View style={styles.tabsImg}>
-                        <Image source={Images.IndexTabs2}/>
-                    </View>
-                </View>
+                <WingBlank style={{ marginBottom: 5 }}>
+                    <Flex>
+                        <Flex.Item style={{ paddingLeft: 4, paddingRight: 4 }}>
+                            <Image source={Images.IndexTabs1}/>
+                        </Flex.Item>
+                        <Flex.Item style={{ paddingLeft: 4, paddingRight: 4 }}>
+                            <Image source={Images.IndexTabs2}/>
+                        </Flex.Item>
+                    </Flex>
+                </WingBlank>
                 <Text>aaa</Text>
                 <Text style={styles.text} onPress={()=>Actions.Login()}>登录</Text>
                 <Text>aaa</Text>
@@ -104,9 +107,9 @@ const styles = StyleSheet.create({
         height: SCREEN_WIDTH * (340 / 750),
     },
     tabs:{
-        flex: 1
+        flex: 1,
     },
     tabsImg:{
-        float: left
+
     }
 });
