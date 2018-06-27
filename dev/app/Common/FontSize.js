@@ -1,6 +1,3 @@
-/**
- * Created by Rabbit on 2017/4/20.
- */
 const FontSize = (size) => {
     if (PixelRatio === 2) {
         // iphone 5s and older Androids

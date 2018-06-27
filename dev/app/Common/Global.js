@@ -16,6 +16,9 @@ import { px2dp } from './Tool';
 // teaset中提供的一些常用方法
 import { Theme, Toast } from 'teaset';
 
+// 公用样式
+import { commonStyle } from './Stylesheet';
+
 // 基于react-native-fetch-blob封装的网络请求
 // import RTRequest from './Request';
 // 配置文件，可以放网络请求等
@@ -50,6 +53,8 @@ global.Config = Config;
 global.Actions = Actions;
 // 图片加载
 global.Images = Images;
+// 公用样式
+global.Stylex = commonStyle;
 // 弹出框
 global.Alert = Alert;
 // 存储

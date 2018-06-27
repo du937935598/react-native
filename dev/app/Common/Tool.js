@@ -1,7 +1,3 @@
-/**
- * Created by Rabbit on 2017/5/11.
- */
-
 import {
     AsyncStorage,
     Platform

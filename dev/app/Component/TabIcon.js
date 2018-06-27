@@ -1,7 +1,3 @@
-/**
- * Created by Rabbit 下午6:40
- */
-
 import React from 'react';
 import {
     Text,
