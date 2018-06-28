@@ -20,7 +20,7 @@ import { Theme, Toast } from 'teaset';
 import { commonStyle } from './Stylesheet';
 
 // 基于react-native-fetch-blob封装的网络请求
-// import RTRequest from './Request';
+import Request from './Request';
 // 配置文件，可以放网络请求等
 import Config from './Config';
 
@@ -46,7 +46,7 @@ global.px2dp = px2dp;
 // 主题
 global.Theme = Theme;
 // 网络请求
-// global.RTRequest = RTRequest;
+global.RTRequest = Request;
 // 配置
 global.Config = Config;
 // router跳转的方法
@@ -61,5 +61,7 @@ global.Alert = Alert;
 global.AsyncStorage = AsyncStorage;
 // 弹框Toast
 global.Toast = Toast;
+// 全局请求域名
+global.DomainName = 'https://ceshiopen.wanggejinfu.com.cn';
 
 

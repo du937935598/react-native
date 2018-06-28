@@ -29,6 +29,8 @@ import Home from './Pages/Home';
 import List from './Pages/List';
 import Find from './Pages/Find';
 import Account from './Pages/Account';
+// 标的详情
+import StandList from './Pages/detail/StandList';
 
 
 import Login from './Pages/Login/Login';
@@ -129,6 +131,17 @@ const router = () => (
                     title='重置密码'
                     key="LoginPublic"
                     component={LoginPublic}
+                    hideNavBar
+                    gesturesEnabled={false}
+                    onExit={() => console.log('onExit')}
+                    onLeft={Actions.pop}
+                />
+            </Stack>
+            <Stack gesturesEnabled={false} key="StandList">
+                <Scene
+                    title='标的详情'
+                    key="StandList"
+                    component={StandList}
                     hideNavBar
                     gesturesEnabled={false}
                     onExit={() => console.log('onExit')}

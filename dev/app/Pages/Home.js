@@ -6,6 +6,7 @@ import {
     ToastAndroid,
     TouchableHighlight,
     StatusBar,
+    FlatList,
     ScrollView,
     Image,
 } from 'react-native';
@@ -16,13 +17,31 @@ import Standard from '../Component/Standard';
 export default class Home extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            dataList: []
+        };
     } 
 
     componentWillMount(){
-        
-        console.log(SCREEN_WIDTH);
+        var datas = {
+            'proType' : 'NEW_INVESTOR,BANK_BRIDGE,HOUSE_MORTGAGE,CAR_MORTAGE',
+            'uid': ''
+        }
+        RTRequest.send(DomainName + '/query/qapi/product/list.do','GET',datas).then((json) => {
+            console.log(json);
+            this.setState({
+                dataList: json.body.list,
+            })
+            console.log(this.state.dataList)
+        });
+        // /query/qapi/cms/image/list.do?imageType=pbanner
+        console.log(DomainName);
     }
+    
+    _onPress = (item) => {
+        Actions.StandList({pid: item.pid})
+        console.log(item);
+    };
 
     render() {
         return (
@@ -36,7 +55,7 @@ export default class Home extends Component {
                     <Swiper 
                         horizontal={true}
                         autoplay={true}
-                        autoplayTimeout={4}
+                        autoplayTimeout={8}
                         paginationStyle={{bottom: 5}}
                         dot={<View style={{
                             backgroundColor:'rgba(255,255,255,.2)', 
@@ -79,45 +98,49 @@ export default class Home extends Component {
                         <Image source={Images.IndexTabs2} style={styles.tabsImg} />
                     </View>
                 </View>
-                <View style={{marginTop: 10}}>
-                    <Standard 
-                        awardRate='3.5'
-                        investRate='10'
-                        cycle='360'
-                        title='旺满盈307期'
-                        minInvestAmount='100' />
-                </View>
-                <View style={{marginTop: 10}}>
-                    <Standard 
-                        awardRate='1.5'
-                        investRate='8'
-                        cycle='120'
-                        title='旺季盈646期'
-                        minInvestAmount='100' />
-                </View>
+                <FlatList 
+                    data={this.state.dataList} 
+                    keyExtractor={(item, index) => item.pid}
+                    renderItem={({item, separators}) => (
+                        <View style={{marginTop: 10}}>
+                            <TouchableHighlight
+                                onPress={() => this._onPress(item)}
+                                onShowUnderlay={separators.highlight}
+                                onHideUnderlay={separators.unhighlight}> 
+                                    <Standard 
+                                        awardRate={item.awardRate}
+                                        investRate={item.investRate}
+                                        cycle={item.cycle}
+                                        title={item.title}
+                                        minInvestAmount={item.minInvestAmount} 
+                                    />
+                            </TouchableHighlight>
+                        </View>
+                      )}
+                    />
                 <View style={{marginTop: 10}}>
                     <View style={styles.select}>
                         <View style={styles.selectLine}></View>
                         <Text style={styles.selectTitle}>精选产品</Text>
                     </View>
-                    <Standard 
-                        awardRate='1.5'
-                        investRate='8'
-                        cycle='120'
-                        title='旺季盈646期'
-                        minInvestAmount='100' />
-                    <Standard 
-                        awardRate='1.5'
-                        investRate='8'
-                        cycle='120'
-                        title='旺季盈646期'
-                        minInvestAmount='100' />
-                    <Standard 
-                        awardRate='1.5'
-                        investRate='8'
-                        cycle='120'
-                        title='旺季盈646期'
-                        minInvestAmount='100' />
+                    <FlatList 
+                        data={this.state.dataList} 
+                        keyExtractor={(item, index) => item.pid}
+                        renderItem={({item, separators}) => (
+                            <TouchableHighlight
+                            onPress={() => this._onPress(item)}
+                            onShowUnderlay={separators.highlight}
+                            onHideUnderlay={separators.unhighlight}> 
+                                <Standard 
+                                    awardRate={item.awardRate}
+                                    investRate={item.investRate}
+                                    cycle={item.cycle}
+                                    title={item.title}
+                                    minInvestAmount={item.minInvestAmount} 
+                                />
+                            </TouchableHighlight>
+                        )}
+                    />
                 </View>
                 <View style={[styles.tabs,{marginTop: 10}]}>
                     <View style={styles.tabsImg}>
