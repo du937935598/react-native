@@ -54,8 +54,9 @@ export default class Home extends Component {
                 <View style={styles.banner}>
                     <Swiper 
                         horizontal={true}
-                        autoplay={true}
-                        autoplayTimeout={8}
+                        loop={true}
+                        // autoplay={true}
+                        autoplayTimeout={4}
                         paginationStyle={{bottom: 5}}
                         dot={<View style={{
                             backgroundColor:'rgba(255,255,255,.2)', 

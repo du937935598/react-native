@@ -7,6 +7,7 @@ export const commonStyle = {
   black3: '#333333',
   black9: '#999999',
   yellow: '#F78500',
+  fff: '#ffffff',
 
   /** 主题色 **/
   themeColor: '#e74c3c',

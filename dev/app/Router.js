@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { StyleSheet, Text, View, BackHandler, StatusBar, DeviceEventEmitter } from 'react-native';
+import { StyleSheet } from 'react-native';
 import CardStackStyleInterpolator from 'react-navigation';
 
 import {
@@ -11,19 +11,14 @@ import {
     Router,
     Actions,
     Reducer,
-    ActionConst,
-    Overlay,
     Tabs,
     Modal,
-    Drawer,
     Stack,
-    Lightbox,
 } from 'react-native-router-flux';
 import { Theme } from 'teaset';
 
 import TabIcon from './Component/TabIcon';
 // import TabMiddleIcon from './Component/TabMiddleIcon'
-
 
 import Home from './Pages/Home';
 import List from './Pages/List';
@@ -32,27 +27,21 @@ import Account from './Pages/Account';
 // 标的详情
 import StandList from './Pages/detail/StandList';
 
-
 import Login from './Pages/Login/Login';
 import LoginPublic from './Pages/Login/LoginPublic';
 
 const reducerCreate = params => {
     const defaultReducer = new Reducer(params);
     return (state, action) => {
-        // console.log('ACTION:',action,Actions.currentScene)
-        // console.log('Actions:', Actions);
         return defaultReducer(state, action);
     };
 };
 
 const getSceneStyle = () => ({
     backgroundColor: Theme.backgroundColor,
-    // shadowOpacity: 1,
-    // shadowRadius: 3,
 });
 
 const onBackPress = () => {
-    console.log(Actions.state);
     if (Actions.state.index !== 0) {
         return false
     }

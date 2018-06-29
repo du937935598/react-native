@@ -5,6 +5,7 @@ const Images =  {
     List: require('./images/List.png'),
     Find: require('./images/Find.png'),
     Account: require('./images/Account.png'),
+    GoBack: require('./images/GoBack.png'),
     // index banner
     Banner1: require('./images/home/Banner1.png'),
     Banner2: require('./images/home/Banner2.png'),

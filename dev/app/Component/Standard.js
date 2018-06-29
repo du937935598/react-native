@@ -3,10 +3,6 @@ import {
     StyleSheet,
     Text,
     View,
-    ToastAndroid,
-    TouchableHighlight,
-    StatusBar,
-    ScrollView,
     Image,
 } from 'react-native';
 

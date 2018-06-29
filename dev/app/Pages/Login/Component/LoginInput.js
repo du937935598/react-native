@@ -3,7 +3,6 @@ import {
     StyleSheet,
     Text,
     View,
-    Image,
     TouchableOpacity
 } from 'react-native';
 
@@ -42,7 +41,6 @@ const iStyle = StyleSheet.create({
     inputViewStyle:{
         height:px2dp(88),
         marginTop:px2dp(20),
-        // alignItems:'center',
         marginLeft:px2dp(108),
         marginRight:px2dp(108),
         borderBottomColor:'#d1d1d1',
