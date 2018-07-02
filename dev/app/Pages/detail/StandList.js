@@ -7,6 +7,7 @@ import {
     StatusBar,
     TouchableOpacity
 } from 'react-native';
+import NavBar from '../../Component/NavBar';
 
 export default class StandList extends Component {
     constructor(props) {
@@ -28,12 +29,7 @@ export default class StandList extends Component {
                     barStyle='light-content'
                     hidden={false} 
                     animated={true}/>
-                <View style={styles.nav}>
-                    <TouchableOpacity style={styles.navBack} onPress={()=>Actions.pop()}>
-                        <Image source={Images.GoBack} style={styles.navImg} />
-                    </TouchableOpacity>
-                    <Text style={{color: '#fff', fontSize: Stylex.textFont}}>标的详情</Text>
-                </View>
+                <NavBar title="" />
                 <Text>StandList</Text>
                 <Text>{this.props.pid}</Text>
             </View>
@@ -45,26 +41,4 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    nav:{
-        height: 65,
-        flexDirection: 'row',
-        justifyContent:'center',
-        alignItems: 'center',
-        paddingTop: StatusBar.currentHeight,
-        backgroundColor: Stylex.red,
-    },
-    navBack: {
-        width: 25,
-        height: 45,
-        position: 'absolute',
-        top: StatusBar.currentHeight,
-        left: 5,
-        flexDirection: 'row',
-        justifyContent:'center',
-        alignItems: 'center',
-    },
-    navImg:{
-        width: 22,
-        height: 18
-    }
 });

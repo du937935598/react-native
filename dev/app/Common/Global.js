@@ -19,6 +19,9 @@ import { Theme, Toast } from 'teaset';
 // 公用样式
 import { commonStyle } from './Stylesheet';
 
+// 缓存组件
+// import {Storages} from './Storages';
+
 // 基于react-native-fetch-blob封装的网络请求
 import Request from './Request';
 // 配置文件，可以放网络请求等
@@ -58,7 +61,7 @@ global.Stylex = commonStyle;
 // 弹出框
 global.Alert = Alert;
 // 存储
-global.AsyncStorage = AsyncStorage;
+// global.Storages = Storages;
 // 弹框Toast
 global.Toast = Toast;
 // 全局请求域名

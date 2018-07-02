@@ -3,7 +3,6 @@ import {
     StyleSheet,
     Text,
     View,
-    ToastAndroid,
     TouchableHighlight,
     StatusBar,
     FlatList,
@@ -14,6 +13,8 @@ import {
 import Swiper from 'react-native-swiper';
 import Standard from '../Component/Standard';
 
+import * as Storage from '../common/Storage';
+
 export default class Home extends Component {
     constructor(props) {
         super(props);
@@ -22,7 +23,7 @@ export default class Home extends Component {
         };
     } 
 
-    componentWillMount(){
+    componentDidMount(){
         var datas = {
             'proType' : 'NEW_INVESTOR,BANK_BRIDGE,HOUSE_MORTGAGE,CAR_MORTAGE',
             'uid': ''
@@ -34,13 +35,12 @@ export default class Home extends Component {
             })
             console.log(this.state.dataList)
         });
-        // /query/qapi/cms/image/list.do?imageType=pbanner
-        console.log(DomainName);
+
+        console.log(Storage.getUser())
     }
     
     _onPress = (item) => {
         Actions.StandList({pid: item.pid})
-        console.log(item);
     };
 
     render() {
