@@ -3,6 +3,7 @@ import {
     StyleSheet,
     Text,
     View,
+    Alert,
     TouchableHighlight,
     StatusBar,
     FlatList,
@@ -13,9 +14,7 @@ import {
 import Swiper from 'react-native-swiper';
 import Standard from '../Component/Standard';
 
-import * as Storage from '../common/Storage';
-
-export default class Home extends Component {
+export default class Blog extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -35,12 +34,21 @@ export default class Home extends Component {
             })
             console.log(this.state.dataList)
         });
-
-        console.log(Storage.getUser())
     }
     
     _onPress = (item) => {
-        Actions.StandList({pid: item.pid})
+        console.log('xxxxx')
+        console.log(item)
+        LocalStor.get('firsr','22').then(ret => {
+            Alert.alert('aaa','aaa1')
+            console.log(ret);  //获取缓存结果
+            Actions.StandList({pid: item.pid});
+        }).catch(err => {
+            Alert.alert('bbb','bbb1')
+            console.log(err); //抛出的错误
+            Actions.Login();
+            alert('你还没登陆，点啥呢？');
+        });
     };
 
     render() {

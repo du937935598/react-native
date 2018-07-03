@@ -6,7 +6,9 @@ import {
     Image,
 } from 'react-native';
 
-export default class List extends Component {
+import NavBar from '../Component/NavBar';
+
+export default class Seed extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -15,6 +17,7 @@ export default class List extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <NavBar title="我的种子" backBtn="false"/>
                 <Text style={styles.text} onPress={()=>Actions.Login()}>登陆</Text>
                 <Text>aaa</Text>
                 <Text>aaa</Text>

@@ -1,10 +1,10 @@
 // 统一管理项目中的图片，格式按照下面的来
 const Images =  {
     // tablbar ICON
-    Home:require('./images/Home.png'),
-    List: require('./images/List.png'),
-    Find: require('./images/Find.png'),
-    Account: require('./images/Account.png'),
+    Blog:require('./images/Blog.png'),
+    Daily: require('./images/Daily.png'),
+    Pioneer: require('./images/Pioneer.png'),
+    Seed: require('./images/Seed.png'),
     GoBack: require('./images/GoBack.png'),
     // index banner
     Banner1: require('./images/home/Banner1.png'),

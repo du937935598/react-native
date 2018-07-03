@@ -20,10 +20,10 @@ import { Theme } from 'teaset';
 import TabIcon from './Component/TabIcon';
 // import TabMiddleIcon from './Component/TabMiddleIcon'
 
-import Home from './Pages/Home';
-import List from './Pages/List';
-import Find from './Pages/Find';
-import Account from './Pages/Account';
+import Blog from './Pages/Blog';
+import Daily from './Pages/Daily';
+import Pioneer from './Pages/Pioneer';
+import Seed from './Pages/Seed';
 // 标的详情
 import StandList from './Pages/detail/StandList';
 
@@ -74,31 +74,31 @@ const router = () => (
                     activeTintColor='#E83929'       // 选中tabbar图标的颜色
                     inactiveTintColor='#adadad'        // 未选中tabbar图标的颜色
                 >
-                    <Stack key="Home"
-                           title={'首页'}
+                    <Stack key="Blog"
+                           title={'博客'}
                            hideNavBar
-                           image={Images.Home}
-                           selectedImage={Images.Home}>
-                        <Scene component={Home} key="home"/>
+                           image={Images.Blog}
+                           selectedImage={Images.Blog}>
+                        <Scene component={Blog} key="Blog"/>
                     </Stack>
-                    <Stack key='List'
-                           title='理财'
+                    <Stack key='Daily'
+                           title='每日一粒'
                            hideNavBar
-                           image={Images.List}
-                           selectedImage={Images.List}>
-                        <Scene component={List} key="list"/>
+                           image={Images.Daily}
+                           selectedImage={Images.Daily}>
+                        <Scene component={Daily} key="Daily"/>
                     </Stack>
-                    <Stack key="Find"
-                           title='发现'
-                           image={Images.Find}
-                           selectedImage={Images.Find}>
-                        <Scene component={Find} key="find"/>
+                    <Stack key="Pioneer"
+                           title='播种者'
+                           image={Images.Pioneer}
+                           selectedImage={Images.Pioneer}>
+                        <Scene component={Pioneer} key="Pioneer"/>
                     </Stack>
-                    <Stack key="Account"
-                           title='个人'
-                           image={Images.Account}
-                           selectedImage={Images.Account}>
-                        <Scene component={Account} key="account"/>
+                    <Stack key="Seed"
+                           title='我的种子'
+                           image={Images.Seed}
+                           selectedImage={Images.Seed}>
+                        <Scene component={Seed} key="Seed"/>
                     </Stack>
                 </Tabs>
                 {/*// 推荐把需要的路由放在<Tabs/>后面，跳转的时候通过key，Actions.Test3_key*/}
@@ -128,7 +128,7 @@ const router = () => (
             </Stack>
             <Stack gesturesEnabled={false} key="StandList">
                 <Scene
-                    title='标的详情'
+                    title='文章详情'
                     key="StandList"
                     component={StandList}
                     hideNavBar
@@ -146,6 +146,10 @@ export default router;
 const styles = StyleSheet.create({
     tabBarStyle: {
         backgroundColor: '#fff',
-        height:49
+        height:49,
+        justifyContent:'center',
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: '#f00',
     },
 });

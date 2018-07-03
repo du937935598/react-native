@@ -86,6 +86,19 @@ export default class Login extends Component {
     verifyCode = '';
     passCode = '';
     isImage = false;
+    onLoginPress = (code)=>{
+        if(true){
+            console.log('aaaaa')
+            var data = {
+                first: '1',
+                second: '2',
+                thress: '3'
+            }
+            LocalStor.set('firsr', data, 4000,'22');
+            Actions.pop();
+        }
+    }
+
     render() {
         console.log(this.imageUrl);
         return (
@@ -95,13 +108,10 @@ export default class Login extends Component {
                                statusBarStyle='default'
                                rightView={
                                    <TouchableOpacity onPress={()=>Actions.pop()}>
-                                       <Text>关闭aaaaa</Text>
+                                       <Text>关闭</Text>
                                    </TouchableOpacity>
                                }
                 />
-                <Text style={styles.text} onPress={()=>Actions.pop()}>重置密码</Text>
-                <Text style={styles.text} onPress={()=>Actions.pop()}>重置密码</Text>
-                <Text style={styles.text} onPress={()=>Actions.pop()}>重置密码</Text>
                 <SegmentedView style={{height:SCREEN_HEIGHT - 64 ,marginTop:64, backgroundColor:'#F9F9F9'}}
                                type='carousel'
                                indicatorLineColor={'#000'}
@@ -135,18 +145,11 @@ export default class Login extends Component {
                                        this.passCode = text;
                                    }}
                         />
-
                     </SegmentedView.Sheet>
                 </SegmentedView>
             </View>
         );
     }
-
-
-    onLoginPress = (code)=>{
-
-    }
-
 }
 
 const styles = StyleSheet.create({

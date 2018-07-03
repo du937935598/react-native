@@ -6,7 +6,9 @@ import {
     Image,
 } from 'react-native';
 
-export default class Account extends Component {
+import NavBar from '../Component/NavBar';
+
+export default class Pioneer extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -15,6 +17,7 @@ export default class Account extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <NavBar title="播种者" backBtn="false"/>
                 <Text style={styles.text} onPress={()=>Actions.Login()}>登陆</Text>
                 <Text>aaa</Text>
                 <Text>aaa</Text>

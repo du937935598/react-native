@@ -20,7 +20,7 @@ import { Theme, Toast } from 'teaset';
 import { commonStyle } from './Stylesheet';
 
 // 缓存组件
-// import {Storages} from './Storages';
+import LocalStors from './LocalStor';
 
 // 基于react-native-fetch-blob封装的网络请求
 import Request from './Request';
@@ -61,7 +61,7 @@ global.Stylex = commonStyle;
 // 弹出框
 global.Alert = Alert;
 // 存储
-// global.Storages = Storages;
+global.LocalStor = LocalStors;
 // 弹框Toast
 global.Toast = Toast;
 // 全局请求域名

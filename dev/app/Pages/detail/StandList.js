@@ -29,7 +29,7 @@ export default class StandList extends Component {
                     barStyle='light-content'
                     hidden={false} 
                     animated={true}/>
-                <NavBar title="" />
+                <NavBar title="文章详情" backBtn="true" />
                 <Text>StandList</Text>
                 <Text>{this.props.pid}</Text>
             </View>

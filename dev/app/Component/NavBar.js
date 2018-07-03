@@ -9,12 +9,14 @@ import {
 } from 'react-native';
 
 const NavBar = (props) => {
+    console.log(props.backBtn)
+    
     return(
         <View>
             <View style={styles.nav}>
-                <TouchableOpacity style={styles.navBack} onPress={()=>Actions.pop()}>
+                {props.backBtn == 'false' ? (null):(<TouchableOpacity style={styles.navBack} onPress={()=>Actions.pop()}>
                     <Image source={Images.GoBack} style={styles.navImg} />
-                </TouchableOpacity>
+                </TouchableOpacity>) }
                 <Text style={{color: '#fff', fontSize: Stylex.textFont}}>{props.title}</Text>
             </View>
         </View>
