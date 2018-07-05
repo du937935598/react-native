@@ -6,6 +6,7 @@ import {
     Alert,
     TouchableHighlight,
     StatusBar,
+    AsyncStorage,
     FlatList,
     ScrollView,
     Image,
@@ -28,27 +29,36 @@ export default class Blog extends Component {
             'uid': ''
         }
         RTRequest.send(DomainName + '/query/qapi/product/list.do','GET',datas).then((json) => {
-            console.log(json);
             this.setState({
                 dataList: json.body.list,
             })
-            console.log(this.state.dataList)
         });
     }
     
     _onPress = (item) => {
-        console.log('xxxxx')
-        console.log(item)
-        LocalStor.get('firsr','22').then(ret => {
-            Alert.alert('aaa','aaa1')
-            console.log(ret);  //获取缓存结果
-            Actions.StandList({pid: item.pid});
-        }).catch(err => {
-            Alert.alert('bbb','bbb1')
-            console.log(err); //抛出的错误
-            Actions.Login();
-            alert('你还没登陆，点啥呢？');
-        });
+        console.log('进')
+        Locals.set('aaa','bbb')
+        // Locals.get('firsr').then(ret => {
+        //     Alert.alert('aaa','aaa1')
+        //     console.log(ret);  //获取缓存结果
+        //     console.log('进1');
+        //     Actions.StandList({pid: item.pid});
+        // }).catch(err => {
+        //     Alert.alert('bbb','bbb1')
+        //     console.log(err); //抛出的错误
+        //     console.log('进1');
+        //     Actions.Login();
+        //     alert('你还没登陆，点啥呢？');
+        // });       
+        if(AsyncStorage.getItem("email")){
+            console.log('1');
+            console.log(JSON.parse(AsyncStorage.getItem("email")))
+        }else{
+            console.log('2');
+            console.log(JSON.parse(AsyncStorage.getItem("email")))
+        }
+        console.log(JSON.parse());
+        console.log('出')
     };
 
     render() {

@@ -149,7 +149,5 @@ const styles = StyleSheet.create({
         height:49,
         justifyContent:'center',
         alignItems: 'center',
-        borderWidth: 1,
-        borderColor: '#f00',
     },
 });

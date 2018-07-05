@@ -94,7 +94,7 @@ export default class Login extends Component {
                 second: '2',
                 thress: '3'
             }
-            LocalStor.set('firsr', data, 4000,'22');
+            Locals.set('firsr', data, 4000);
             Actions.pop();
         }
     }

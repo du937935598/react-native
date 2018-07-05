@@ -1,3 +1,4 @@
+
 import Storage from 'react-native-storage'
 import { AsyncStorage } from 'react-native'
  
@@ -26,7 +27,7 @@ var storage = new Storage({
 })
  
  
-var LocalStor = {
+var Local = {
     /**
      * 设置缓存
      * @params key  必传 唯一标识
@@ -162,4 +163,4 @@ var LocalStor = {
  
  
  
-module.exports = LocalStor;
+module.exports = Local
