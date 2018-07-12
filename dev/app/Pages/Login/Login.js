@@ -3,6 +3,7 @@ import {
     StyleSheet,
     Text,
     View,
+    AsyncStorage,
     TouchableOpacity,
 } from 'react-native';
 
@@ -88,13 +89,17 @@ export default class Login extends Component {
     isImage = false;
     onLoginPress = (code)=>{
         if(true){
-            console.log('aaaaa')
-            var data = {
-                first: '1',
-                second: '2',
-                thress: '3'
-            }
-            Locals.set('firsr', data, 4000);
+            var object = {
+                name:'xmg',
+                age:18
+            };
+            AsyncStorage.setItem('token',JSON.stringify(object),(error)=>{
+                if (error) {
+                    alert('存储失败');
+                } else  {
+                    alert('存储成功');
+                }
+            });
             Actions.pop();
         }
     }

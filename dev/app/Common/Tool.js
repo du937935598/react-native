@@ -23,6 +23,6 @@ export default {
 // 设计图上的比例，宽度
 let basePx = Platform.OS === 'ios' ? 750 : 720;
 
-exports.px2dp = function px2dp(px: number): number {
+exports.px2dp = function px2dp(px) {
     return px / basePx * SCREEN_WIDTH;
 };

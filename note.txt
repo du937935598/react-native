@@ -28,3 +28,8 @@ npm install --save react-native-tab-navigator       tabBar
 打包：
 进入：android 文件夹
 ./gradlew assembleRelease
+
+
+npm install -g react-devtools
+react-devtools
+adb reverse tcp:8097 tcp:8097

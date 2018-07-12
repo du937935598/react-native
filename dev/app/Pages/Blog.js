@@ -36,29 +36,24 @@ export default class Blog extends Component {
     }
     
     _onPress = (item) => {
-        console.log('进')
-        Locals.set('aaa','bbb')
-        // Locals.get('firsr').then(ret => {
-        //     Alert.alert('aaa','aaa1')
-        //     console.log(ret);  //获取缓存结果
-        //     console.log('进1');
-        //     Actions.StandList({pid: item.pid});
-        // }).catch(err => {
-        //     Alert.alert('bbb','bbb1')
-        //     console.log(err); //抛出的错误
-        //     console.log('进1');
-        //     Actions.Login();
-        //     alert('你还没登陆，点啥呢？');
-        // });       
-        if(AsyncStorage.getItem("email")){
-            console.log('1');
-            console.log(JSON.parse(AsyncStorage.getItem("email")))
-        }else{
-            console.log('2');
-            console.log(JSON.parse(AsyncStorage.getItem("email")))
-        }
-        console.log(JSON.parse());
-        console.log('出')
+        
+        // AsyncStorage.removeItem('token',(error)=>{
+        //     if (error) {
+        //         alert('删除失败');
+        //     } else  {
+        //         alert('删除成功');
+        //     }
+        // });
+
+        AsyncStorage.getItem('token',(error,result)=>{
+            if (!error && result !== null) {
+                alert(result);
+                Actions.StandList({pid: item.pid});
+            }else{
+                Actions.Login();
+                alert('你还没登陆，点啥呢？');
+            }
+        })
     };
 
     render() {
