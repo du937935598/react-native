@@ -3,7 +3,6 @@ import {
     StyleSheet,
     Text,
     View,
-    Alert,
     TouchableHighlight,
     StatusBar,
     AsyncStorage,
@@ -44,16 +43,20 @@ export default class Blog extends Component {
         //         alert('删除成功');
         //     }
         // });
-
+        console.log('aaa');
         AsyncStorage.getItem('token',(error,result)=>{
+            console.log('ssss');
             if (!error && result !== null) {
+                console.log('dddd');
                 alert(result);
                 Actions.StandList({pid: item.pid});
             }else{
+                console.log('ffff')
                 Actions.Login();
                 alert('你还没登陆，点啥呢？');
             }
         })
+        console.log('gggg')
     };
 
     render() {
